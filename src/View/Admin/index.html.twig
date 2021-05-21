@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8"/>
+		<title>Dashboard</title>
+		<link rel="stylesheet" href="../assets/css/admin.css" type="text/css" media="screen"/>
+	</head>
+	<body>
+
+		<header id="header">
+			<hgroup>
+				<h2 class="section_title" style="padding-left: 15%;">
+					<a href="/admin/home">Dashboard</a>
+				</h2>
+			</hgroup>
+		</header>
+
+		<section id="secondary_bar">
+			<div class="user">
+				{% for sale in sales %}
+					<p>Chiffre d'affaire :
+						{{ sale / 100 }}
+						€
+					</p><br>
+				{% endfor %}
+			</div>
+			<div class="ca">
+				{% for  sale_of_the_day in sales_of_day %}
+					Chiffre d'affaire du
+					{{ "now"|date("m/d/Y") }}
+					:
+					{{ sale_of_the_day / 100}}
+					€
+				{%  endfor %}
+			</div>
+
+
+		</section>
+
+		<aside id="sidebar" class="column">
+			<br>
+			<h3>
+				<a href="/admin/allorders">Toutes les commandes</a>
+			</h3>
+			<ul class="toggle"></ul>
+			<h3>
+				<a href="/admin/showpizza">Pizza</a>
+			</h3>
+			<ul class="toggle"></ul>
+			<h3>
+				<a href="/admin/allcategory">Categories</a>
+			</h3>
+			<ul class="toggle"></ul>
+			<h3>
+				<a href="/admin/allcustomers">Clients</a>
+			</h3>
+			<ul class="toggle"></ul>
+			<h3>
+				<a href="/">Retour a l'accueil</a>
+			</h3>
+			<ul class="toggle"></ul>
+			<h3>
+				<a href="/User/logout">Se déconnecter</a>
+			</h3>
+			<ul class="toggle"></ul>
+		</aside>
+
+		<section id="main" class="column">
+			<article class="module width_3_quarter">
+				<header>
+					<h3 class="tabs_involved">Commandes du jour</h3>
+				</header>
+				<div class="tab_container">
+					<div id="tab1" class="tab_content">
+						<table class="tablesorter" cellspacing="0">
+							<thead>
+								<tr>
+									<th>Date/Heure</th>
+									<th>Client</th>
+									<th>Total</th>
+									<th></th>
+								</tr>
+							</thead>
+							<tbody>
+								{% for order in orders %}
+									<tr>
+										<td>{{ order.created_at }}</td>
+										<td>{{ order.firstname }}
+											{{ order.lastname }}</td>
+										<td>{{ order.quantity * order.price / 100 }}
+											€</td>
+										<td style="padding-left: 2%">
+											<a href="/admin/show/{{ order.id }}">Detail</td>
+										</td>
+									</tr>
+								{% endfor %}
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</article>
+			<div class="spacer"></div>
+		</section>
+
+	</body>
+
+</html>

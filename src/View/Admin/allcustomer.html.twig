@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8"/>
+		<title>Dashboard</title>
+		<link rel="stylesheet" href="../assets/css/admin.css" type="text/css" media="screen"/>
+	</head>
+	<body>
+
+		<header id="header">
+			<hgroup>
+				<h2 class="section_title" style="padding-left: 15%;">
+					<a href="/admin/home">Dashboard</a>
+				</h2>
+			</hgroup>
+		</header>
+
+		<section id="secondary_bar">
+			<div class="user">
+				{% for sale in sales %}
+					<p>Chiffre d'affaire :
+						{{ sale / 100 }}
+						€
+					</p><br>
+				{% endfor %}
+			</div>
+			<div class="ca">
+				{% for  sale_of_the_day in sales_of_day %}
+					Chiffre d'affaire du
+					{{ "now"|date("m/d/Y") }}
+					:
+					{{ sale_of_the_day / 100}}
+					€
+				{%  endfor %}
+			</div>
+
+
+		</section>
+
+		<aside id="sidebar" class="column">
+			<br>
+			<h3>
+				<a href="/admin/allorders">Toutes les commandes</a>
+			</h3>
+			<ul class="toggle"></ul>
+			<h3>
+				<a href="/admin/showpizza">Pizza</a>
+			</h3>
+			<ul class="toggle"></ul>
+			<h3>
+				<a href="/admin/allcategory">Categories</a>
+			</h3>
+			<ul class="toggle"></ul>
+			<h3>
+				<a href="/admin/allcustomers">Clients</a>
+			</h3>
+			<ul class="toggle"></ul>
+			<h3>
+				<a href="/">Retour a l'accueil</a>
+			</h3>
+			<ul class="toggle"></ul>
+			<h3>
+				<a href="/User/logout">Se déconnecter</a>
+			</h3>
+			<ul class="toggle"></ul>
+		</aside>
+
+		<section id="main" class="column">
+			<article class="module width_3_quarter">
+				<header>
+					<h3 class="tabs_involved">Utilisateurs
+						<small style="padding-left:5%">
+							<a href="/admin/addCustomer">Ajouter</a>
+						</small>
+					</p>
+				</h3>
+				<p></p>
+			</header>
+			<div class="tab_container">
+				<div id="tab1" class="tab_content">
+					<table class="tablesorter" cellspacing="0">
+						<thead>
+							<tr>
+								<th>Prénom</th>
+								<th>Nom</th>
+								<th>E-mail</th>
+								<th>Addresse</th>
+								<th></th>
+							</tr>
+						</thead>
+						<tbody>
+							{% for customer in all_customers %}
+								<tr>
+									<td>{{ customer.firstname}}</td>
+									<td>{{ customer.lastname}}</td>
+									<td>{{ customer.email}}</td>
+									<td>{{ customer.adress}}</td>
+									<td>
+										<form action="/admin/deletecustomer/{{customer.id}}" method="POST">
+											<button>Supprimer</button>
+										</form>
+									</td>
+								</tr>
+							{% endfor %}
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</article>
+		<div class="spacer"></div>
+	</body>
+</html></section></body></html>

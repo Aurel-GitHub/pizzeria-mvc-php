@@ -1,0 +1,29 @@
+{% extends 'layout.html.twig' %}
+
+{% block content %}
+<section class="section bd-container">
+{% block title %}
+	{# Connexion au petit Naples | #}
+{% endblock %}
+	<div>
+
+		<form method="post">
+			<div class="container text-center">
+			<h1 class="text-center pt-4">Connexion à mon compte</h1>
+			{# <small style="visibility:hidden" class="form-text text-muted">Help text for a form field.</small> #}
+			<div class="form_connection">
+				<input type="email" name="email" placeholder="Email">
+				<div class="form-group">
+					<input type="password" name="password" placeholder="Mot de passe">
+				</div>
+				<div class="user_buttons">
+					<button class="button" type="submit" name="submit">Se connecter</button>
+						<a class="text-xs mx-2 text-black" href="\User\logout">Se déconnecter</a>
+				</div>
+			</div>
+			{# <a class="forgot" style="visibility:hidden" href="#">Mot de passe oublié ?</a> #}
+		</div>
+		</form>
+	</div>
+</section>
+{% endblock %}

@@ -1,0 +1,78 @@
+{% extends 'layout.html.twig' %}
+
+{% block content %}
+
+	<section class="home" id="home">
+		<div class="home__container bd-container bd-grid">
+			<img src="/assets/images/pizza_acceuil.png" alt="" width="80%" class="">
+			<div class="home__data">
+				<h1 class="home__subtitle">
+
+					{% for item in pizza %}
+						<br/>
+					</h1>
+					<div class="product_price" id="price" name="price">{{ item.price /100 }}
+						€</div>
+					<div class="product_descr" id="name_pizza" name="name_pizza">{{ item.name_pizza }}</div>
+					<div class="product_descr" id="description" name="description">{{ item.description }}</div>
+
+					<div class="product_color">Catégorie:{{ item.name_category}}</div>
+					{# <div class="product_color">someone@something.com</div>
+										<div class="product_color">+92 308 1234567</div> #}
+					{# <div class="product_quantity"><br>
+						<input type="number" value="1" name="quantity" id="quantity" value="1">
+					</div>
+					#}
+					<a href="/home/addtocartfromdetail/{{item.id}}" class="button letter-spacing-xxl">Ajouter au panier</a>
+					
+
+				{% endfor %}
+				{# <form role="form" action="" method="POST">
+				                    <input type="hidden" id="add_to_cart" name="add_to_cart" />
+				                    <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span>Ajouter au Panier</button>
+				                </form> #}
+			</div>
+		</div>
+	</section>
+	{# <section>
+			<div class="text-center">
+				<h2 class="home__subtitle">
+					Vous aimerez aussi
+				</h2>
+			</div>
+	
+			<div class="sugestion__container section bd-container">
+				<div class="menu__content">
+					<a href="/home/product">
+	                {# TODO IMAGE FROM DB #}
+{# <img src="/assets/images/pizza_acceuil.png" alt="" class="menu__img"/>
+				</a>
+				<h3 class="menu__name"></h3>
+				<span class="menu__detail"></span>
+				<span class="menu__preci"></span>
+				<a href="#" class="button menu__button">
+					<i class="bx bx-cart-alt"></i>
+				</a>
+			</div> #}
+	{# <div class="menu__content">
+				            <a href="/home/product" >
+				                <img src="/assets/images/pizza_acceuil.png" alt="" class="menu__img" />
+				              </a>
+				            <h3 class="menu__name">Barbecue salad</h3>
+				            <span class="menu__detail">Delicious dish</span>
+				            <span class="menu__preci">$22.00</span>
+				            <a href="#" class="button menu__button"><i class="bx bx-cart-alt"></i></a>
+				        </div>
+				        <div class="menu__content">          
+				            <a href="/home/product" >
+				            <img src="/assets/images/pizza_acceuil.png" alt="" class="menu__img" />
+				          </a>
+				            <h3 class="menu__name">Barbecue salad</h3>
+				            <span class="menu__detail">Delicious dish</span>
+				            <span class="menu__preci">$22.00</span>
+				            <a href="#" class="button menu__button"><i class="bx bx-cart-alt"></i></a>
+				        </div> #}
+	{# </div>
+		</section>  #}
+
+{% endblock %}

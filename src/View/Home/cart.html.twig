@@ -1,0 +1,101 @@
+{% extends 'layout.html.twig' %}
+
+{% block content %}
+	<section class="bd-container bd-grid pt-8" style="overflow-x:auto;">
+		<h1 class="text-left home__subtitle">Mon panier</h1>
+		<table class="table-responsive">
+
+			<thead>
+				<tr class="pb-4">
+					<th scope="col"></th>
+					<th scope="col text-left">Nom</th>
+					<th scope="col">Prix</th>
+					<th scope="col">Quantité</th>
+					<th scope="col">Total</th>
+					<th scope="col"></th>
+				</tr>
+			</thead>
+
+			{% for result in results %}
+				<form method="get">
+				<tr>
+				{# <input type="hidden" id="pizza_id" name="pizza_id" value="{{result.id}}"></input> #}
+ 					{# <td><img src="/assets/images/pizza_acceuil.png" alt="" class="menu__img"></td> #}
+					<td><img src="/assets/images/{{result.image}}" alt="" class="menu__img"/></td>
+					<td>{{ result.name_pizza }}</td>
+					<td id="total" name="total">{{ result.price / 100  }}€</td>
+					{% for quantity in quantities %}
+						<td id="quantity" name="quantity">{{ quantity }}</td>
+					{% endfor %}
+					{% for quantity in quantities %}
+						<td id="total" name="total">{{ quantity * result.price / 100}} €</td>					
+					{% endfor %}
+						<td id="" name="">
+							<button class="button">
+								Suprimer</button>
+						</td>
+				</tr>
+				</form>
+			{% endfor %}
+{# http://survey.alchemer.com/s3/1234567/my-survey?userid=121&name=bob #}
+			{# <tbody>
+										<tableau>
+						
+											<tr>
+						
+												<th scope="row"><img src="/assets/images/pizza_acceuil.png" alt="" class="menu__img">
+						
+												</th>
+												<form>
+													{% for result in results %}
+														<td id="name_pizza" name="name_pizza">
+															{{result.name_pizza}}</td>
+													</td>
+												{% endfor %}
+											</tr>
+										</tr>
+									</tbody>
+								</tbody>
+							</td>
+							{% for result in results %}
+								<td id="price" name="price">
+									{{result.price /100}}€
+								</td>
+							{% endfor %}
+							<td id="quantity" name="quantity">
+								ICI QUANTITE
+								<br><br>
+								<br><br>
+							</td>
+							<td id="total" name="total">
+								QUANTITE * PRIX
+								<br><br>
+							</td>
+						</form> #}
+
+		</tr>
+	</tableau>{#<tr>
+																																							        <th scope="row"><img src="/assets/images/pizza_acceuil.png" alt="" class="menu__img">
+																																							        </th>
+																																							        <td>Pizza 4 fromages</td>
+																																							        <td>12$</td>
+																																							        <td>1</td>
+																																							        <td>12$</td>
+																																							        <td><button class="button"> Suprimmer</button></td>
+																																							      </tr>
+																																							      <tr>
+																																							        <th scope="row"><img src="/assets/images/pizza_acceuil.png" alt="" class="menu__img">
+																																							        </th>
+																																							        <td>Pizza 4 fromages</td>
+																																							        <td>12$</td>
+																																							        <td>1</td>
+																																							        <td>12$</td>
+																																							        <td><button class="button"> Suprimmer</button></td>
+																																							      </tr>
+																																							    </tbody> #}</tbody></table><div>
+{# <h3>Résumé :</h3> #}
+{# <p>Sous-total	12,00$</p> #}
+{# {% for result in results %}
+	<p>Total	€</p>
+{% endfor %} #}
+<button type="submit" id="submit" value="submit" class="button mt-2">Payer la commande</button></div></section>{% endblock %}

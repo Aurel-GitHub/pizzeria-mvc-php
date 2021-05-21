@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8"/>
+		<title>Dashboard</title>
+		<link rel="stylesheet" href="/assets/css/admin.css" type="text/css" media="screen"/>
+	</head>
+	<body>
+
+		<header id="header">
+			<hgroup>
+				<h2 class="section_title" style="padding-left: 15%;">
+					<a href="/admin/home">Dashboard</a>
+				</h2>
+			</hgroup>
+		</header>
+
+		<section id="secondary_bar">
+			<div class="user">
+				{% for sale in sales %}
+					<p>Chiffre d'affaire :
+						{{ sale / 100 }}
+						€
+					</p><br>
+				{% endfor %}
+			</div>
+			<div class="ca">
+				{% for  sale_of_the_day in sales_of_day %}
+					Chiffre d'affaire du
+					{{ "now"|date("m/d/Y") }}
+					:
+					{{ sale_of_the_day / 100}}
+					€
+				{%  endfor %}
+			</div>
+
+
+		</section>
+
+		<aside id="sidebar" class="column">
+			<br>
+			<h3>
+				<a href="/admin/allorders">Toutes les commandes</a>
+			</h3>
+			<ul class="toggle"></ul>
+			<h3>
+				<a href="/admin/showpizza">Pizza</a>
+			</h3>
+			<ul class="toggle"></ul>
+			<h3>
+				<a href="/admin/allcategory">Categories</a>
+			</h3>
+			<ul class="toggle"></ul>
+			<h3>
+				<a href="/admin/allcustomers">Clients</a>
+			</h3>
+			<ul class="toggle"></ul>
+			<h3>
+				<a href="/">Retour a l'accueil</a>
+			</h3>
+			<ul class="toggle"></ul>
+			<h3>
+				<a href="/User/logout">Se déconnecter</a>
+			</h3>
+			<ul class="toggle"></ul>
+		</aside>
+
+		<section id="main" class="column">
+			<article class="module width_3_quarter">
+				<header>
+					<h3 class="tabs_involved">Créer
+					</h3>
+				</header>
+				<div class="tab_container">
+					<div id="tab1" class="tab_content">
+						<table class="tablesorter" cellspacing="0">
+							<tbody>
+								<form method="post" enctype="multipart/form-data">
+									<ul>
+										<li style="list-style:none;"><input placeholder="Nom de votre pizza" type="text" name="name_pizza" id="name_pizza" required></li><br>
+										<li style="list-style:none;"><input placeholder="Une petite description ..." type="text" name="description" id="description" required></li><br>
+										<li style="list-style:none;"><input type="number" step="any" name="price" id="price" required></li><br>
+										<li style="list-style:none;"><input type="text" placeholder="Lien de votre image" name="image" id="image"></li><br>
+										{# <li style="list-style:none;"><input type="file" placeholder="Lien de votre image" name="image" id="image"></li><br> #}
+										<li style="list-style:none;">
+											<select name="category_id" name="category_id" id="category_id"></li><br>
+											<option value="">--Choisir une base de pizza--</option>
+											{% for category in categories %}
+												<option value="{{ category.id}}">{{ category.name_category }}
+												</option>
+											{% endfor %}
+										</li>
+									</select>
+								</li><br>
+								<li style="list-style:none;">
+									<select id="isActived" name="isActived">
+										<option value="">--Mettre en ligne ?--</option>
+										<option id="isActived" name="isActived" value="1">Oui</option>
+										<option id="isActived" name="isActived" value="">Non</option>
+									</select>
+								</li><br>
+								<li style="list-style:none;"><input type="submit" name="submit" id="submit" value="Valider"></li><br></tbody>
+						</ul>
+					</tbody>
+				</form>
+			</tbody>
+		</tbody>
+	</body>
+</html></ul></tbody></body></html></table></div></body></body></html> </div></article><div class="spacer"></div></body></html></section></body></html>
